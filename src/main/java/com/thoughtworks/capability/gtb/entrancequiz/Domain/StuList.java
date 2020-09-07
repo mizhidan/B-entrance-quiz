@@ -1,12 +1,9 @@
 package com.thoughtworks.capability.gtb.entrancequiz.Domain;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class StuList {
-    Map<String, String> stuList = new HashMap<>();
+    Map<String, String> stuList = new LinkedHashMap<>();
 
     public StuList() {
         stuList.put("1","沈乐棋");
@@ -46,16 +43,17 @@ public class StuList {
         stuList.put("35","凌凤仪");
     }
 
-    public List<String> convertToList() {
-        List<String> resultList = new ArrayList<>();
+    public List<StudentName> convertToList() {
+
+        List<StudentName> resultList = new ArrayList<>();
         stuList.forEach((key, value) -> {
-            resultList.add(key+"."+value);
+            StudentName studentName = new StudentName();
+            studentName.setName(key+"."+value);
+            resultList.add(studentName);
         });
         return resultList;
     }
 
-    public Map<String, String> getStuList() {
-        return stuList;
-    }
+    
 
 }
